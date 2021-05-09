@@ -7,3 +7,6 @@ urlpatterns = [
     path('', index, name='index'),
 ]
 
+urlpatterns += [
+	path('api/available-rooms/', available_rooms, name='available_rooms'),
+]

@@ -1,18 +1,12 @@
-<div class="container my-3">
+<div class="container container my-3">
     <h2>Create Reservation</h2>
     <form method="post">
         {% csrf_token %}
 
-        <div class="form-group">
-            <label for="target-date">Reservation Date</label>
-            <input class="form-control" id="target-date" name="target-date" type="date" required>
-        </div>
+        {{ form.as_p }}
 
         <div class="form-group">
-            <label for="days">Stay duration (days)</label>
-            <input class="form-control" type="number" name="days" id="days" required>
+            <input type="submit" value="Create" class="btn btn-primary btn-raised">
         </div>
-
-        <input type="submit" value="Create" class="btn btn-primary">
     </form>
 </div>

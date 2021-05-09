@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}HMS | Home{% endblock title %}
 {% block content %}
     {% include 'hms_site/navbar.html' %}
     {% include 'hms_site/booking.html' %}
 {% endblock content %}
+{% block scripts %}
+	<script src="{% static 'hms_site/js/index.js' %}"></script>
+{% endblock scripts %}
