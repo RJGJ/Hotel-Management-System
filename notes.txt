@@ -1,0 +1,32 @@
+HMS SCOPE
+
+index page is booking page
+
+MODELS:
+    room
+        id
+        name
+        price/h
+        tier/class (optional)
+            economy and premium
+        states 
+            vacant, ocuupied, for_cleaning
+    
+    custumer
+        id
+        fname
+        lname
+        email
+        number
+
+    booking / reservation
+        id
+        creator # admin or employee
+        creation_date
+        expiration_date
+        claimed
+        hours # how long is the stay
+        room
+        custumer
+
+should have a system that runs on N amount seconds/milliseconds that checks the state of rooms

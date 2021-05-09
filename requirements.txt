@@ -1,0 +1,4 @@
+django==3.2.2
+django-allauth==0.44.0
+django-phonenumber-field==5.1.0 
+phonenumbers==8.12.22
