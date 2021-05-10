@@ -31,4 +31,8 @@ MODELS:
 
 should have a system that runs on N amount seconds/milliseconds that checks the state of rooms
 
-reservation form should automatically add current user as creator
+TODO:
+OK  reservation form should automatically add current user as creator
+    change reservation filter input to appropriate input types
+
+

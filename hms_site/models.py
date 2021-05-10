@@ -41,4 +41,4 @@ class Reservation(models.Model):
     customer_name = models.CharField(max_length=255, blank=False, default=None)
 
     def __str__(self):
-        return f'reservation on: {self.target_date}'
+        return f'reservation on: {self.check_in_date}'

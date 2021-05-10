@@ -8,5 +8,7 @@
     </div>
 {% endblock content %}
 {% block scripts %}
-	<script src="{% static 'hms_site/js/index.js' %}"></script>
+    {% if not should_update %}
+	    <script src="{% static 'hms_site/js/index.js' %}"></script>
+    {% endif %}
 {% endblock scripts %}

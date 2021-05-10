@@ -14,5 +14,11 @@ class ReservationForm(ModelForm):
             'claimed',
         ]
         widgets = {
-            'target_date': DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
+            'check_in_date': DateInput( 
+                attrs={
+                    'class':'form-control', 
+                    'type':'date',
+                    'placeholder': 'self.instance.check_in_date',
+                }
+            ),
         }

@@ -8,12 +8,16 @@ from .forms import *
 from .models import *
 from .tables import *
 from .filters import *
+from .tasks import *
 
 
 # Create your views here.
 @login_required
 @staff_member_required
 def index(request, reservation_id=None):
+
+    do_tasks()
+
     form = ReservationForm()
 
     should_update = False
@@ -24,11 +28,21 @@ def index(request, reservation_id=None):
         should_update = True
 
     if request.method == 'POST':
+        
         form = ReservationForm(request.POST)
+        
+        if not reservation_id == None:
+            reservation_obj = Reservation.objects.get(id=reservation_id)
+            form = ReservationForm(request.POST, instance=reservation_obj)
+        
         if form.is_valid:
-            obj = form.save()
-            creator = request.user
-            obj.creator = creator
+            if should_update:
+                obj = form.save(commit=False)
+            else:
+                obj = form.save()
+                creator = request.user
+                obj.creator = creator
+            
             obj.save()
 
     context = {
