@@ -17,6 +17,9 @@ class Room(models.Model):
     price = models.IntegerField()   # cost of stay per day
     state = models.IntegerField(choices=states)
 
+    def __str__(self):
+        return self.name
+
 
 class Custumer(models.Model):
     first_name = models.CharField(max_length=255, blank=False, default=None)
@@ -24,12 +27,18 @@ class Custumer(models.Model):
     email = models.EmailField(blank=True, default=None)
     number = PhoneNumberField(blank=False, default=None)
 
+    def __str__(self):
+        return self.first_name
+
 
 class Reservation(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE) # the employee/admin that created this reservation
     creation_date = models.DateTimeField(auto_now=True)
     target_date = models.DateField(blank=False, default=None) # can be claimed within the day of target date
     claimed = models.BooleanField(default=False) # if reservation is claimed
-    days = models.IntegerField(default=8)
+    days = models.IntegerField(default=1)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     custumer = models.ForeignKey(Custumer, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.id
