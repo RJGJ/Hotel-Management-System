@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}HMS | Reservations{% endblock title %}
+{% block content %}
+    {% include 'hms_site/navbar.html' %}
+    
+    <div class="container my-3 animate__animated animate__fadeIn">
+        <h2>Reservations</h2>
+
+        {% comment %} filter {% endcomment %}
+        <form method="GET">
+            {% csrf_token %}
+            {{ filter.form }}
+            <input type="submit" value="Search" class="btn btn-primary btn-raised my-2">
+        </form>
+
+        <hr>
+
+        {% comment %} table {% endcomment %}
+        <div>
+            {% load django_tables2 %} 
+            {% render_table table %}
+        </div>
+    </div>
+
+{% endblock content %}
+{% block scripts %}
+	<script src="{% static 'hms_site/js/reservations.js' %}"></script>
+{% endblock scripts %}

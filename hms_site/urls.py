@@ -5,6 +5,8 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='index'),
+    path('reservation/<int:reservation_id>/', index, name='reservation'),
+    path('reservations', reservations, name='reservations'),
 ]
 
 urlpatterns += [

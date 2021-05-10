@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*'] if DEBUG else []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
+    'django_tables2',
     'django_admin_generator',
     'phonenumber_field',
 

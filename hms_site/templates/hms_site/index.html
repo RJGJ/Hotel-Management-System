@@ -3,7 +3,9 @@
 {% block title %}HMS | Home{% endblock title %}
 {% block content %}
     {% include 'hms_site/navbar.html' %}
-    {% include 'hms_site/booking.html' %}
+    <div class="animate__animated animate__fadeIn">
+        {% include 'hms_site/booking.html' %}
+    </div>
 {% endblock content %}
 {% block scripts %}
 	<script src="{% static 'hms_site/js/index.js' %}"></script>

@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+# vim: set fileencoding=utf-8 :
+from django.contrib import admin
+
 # vim: set fileencoding=utf-8 :
 from django.contrib import admin
 
@@ -26,27 +28,26 @@ class ReservationAdmin(admin.ModelAdmin):
         'id',
         'creator',
         'creation_date',
-        'target_date',
+        'check_in_date',
         'claimed',
         'days',
         'room',
-        'custumer',
+        'customer_name',
     )
     list_filter = (
         'creator',
         'creation_date',
-        'target_date',
+        'check_in_date',
         'claimed',
         'room',
-        'custumer',
         'id',
         'creator',
         'creation_date',
-        'target_date',
+        'check_in_date',
         'claimed',
         'days',
         'room',
-        'custumer',
+        'customer_name',
     )
 
 
