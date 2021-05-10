@@ -23,10 +23,16 @@ MODELS:
         id
         creator # admin or employee
         creation_date
-        expiration_date
+        target_date (can be claimed before or 1 day after)
         claimed
-        hours # how long is the stay
+        hours # how long is the stay minimun 8-hrs
         room
         custumer
 
 should have a system that runs on N amount seconds/milliseconds that checks the state of rooms
+
+TODO:
+OK  reservation form should automatically add current user as creator
+    change reservation filter input to appropriate input types
+
+

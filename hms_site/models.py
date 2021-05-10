@@ -32,13 +32,13 @@ class Custumer(models.Model):
 
 
 class Reservation(models.Model):
-    creator = models.ForeignKey(User, on_delete=models.CASCADE) # the employee/admin that created this reservation
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True) # the employee/admin that created this reservation
     creation_date = models.DateTimeField(auto_now=True)
-    target_date = models.DateField(blank=False, default=None) # can be claimed within the day of target date
+    check_in_date = models.DateField(blank=False, default=None) # can be claimed within the day of target date
     claimed = models.BooleanField(default=False) # if reservation is claimed
     days = models.IntegerField(default=1)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    custumer = models.ForeignKey(Custumer, on_delete=models.CASCADE)
+    customer_name = models.CharField(max_length=255, blank=False, default=None)
 
     def __str__(self):
-        return self.id
+        return f'reservation on: {self.check_in_date}'

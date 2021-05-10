@@ -1,12 +1,29 @@
 <div class="container container my-3">
-    <h2>Create Reservation</h2>
+    <h2>
+        {% if should_update %}
+            Update
+        {% else %}
+            Create
+        {% endif %}
+        Reservation</h2>
     <form method="post">
         {% csrf_token %}
 
         {{ form.as_p }}
 
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary btn-raised">
+        <div class="d-flex">
+            <div class="form-group m-2">
+                <input 
+                    type="submit" 
+                    value="
+                        {% if should_update %}
+                            Update
+                        {% else %}
+                            Create
+                        {% endif %}" 
+                    class="btn btn-primary btn-raised"
+                >
+            </div>
         </div>
     </form>
 </div>
