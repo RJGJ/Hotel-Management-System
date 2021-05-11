@@ -8,7 +8,7 @@ class ReservationForm(ModelForm):
         model = Reservation
         fields = [
             'check_in_date',
-            'days',
+            'check_out_date',
             'room',
             'customer_name',
             'claimed',
@@ -19,6 +19,13 @@ class ReservationForm(ModelForm):
                     'class':'form-control', 
                     'type':'date',
                     'placeholder': 'self.instance.check_in_date',
+                }
+            ),
+            'check_out_date': DateInput( 
+                attrs={
+                    'class':'form-control', 
+                    'type':'date',
+                    'placeholder': 'self.instance.check_out_date',
                 }
             ),
         }

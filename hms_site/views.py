@@ -55,23 +55,28 @@ def index(request, reservation_id=None):
 @login_required
 @staff_member_required
 def available_rooms(request):
-	
-	# get rooms with state of 0 (vacant)
-	rooms = Room.objects.filter(state=0)
-	json_serializer = json.Serializer()
-	rooms_serialized = json_serializer.serialize(rooms)
 
-	data = {
-		'message': 'hello world',
-		'rooms': rooms_serialized,
-	}
-	
-	return JsonResponse(data)
+    do_tasks()
+    
+    # get rooms with state of 0 (vacant)
+    rooms = Room.objects.filter(available=True)
+    json_serializer = json.Serializer()
+    rooms_serialized = json_serializer.serialize(rooms)
+
+    data = {
+        'message': 'hello world',
+        'rooms': rooms_serialized,
+    }
+    
+    return JsonResponse(data)
 
 
 @login_required
 @staff_member_required
 def reservations(request):
+
+    do_tasks()
+
     queryset = Reservation.objects.all()
     table = ReservationTable(queryset)
 

@@ -6,16 +6,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Room(models.Model):
-
-    states = [
-        (0, 'vacant'),
-        (1, 'occupied'),
-        (2, 'for cleaning'),
-    ]
-
     name = models.CharField(max_length=255, blank=False, default=None)
     price = models.IntegerField()   # cost of stay per day
-    state = models.IntegerField(choices=states)
+    available = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -34,9 +27,9 @@ class Custumer(models.Model):
 class Reservation(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True) # the employee/admin that created this reservation
     creation_date = models.DateTimeField(auto_now=True)
-    check_in_date = models.DateField(blank=False, default=None) # can be claimed within the day of target date
+    check_in_date = models.DateField(blank=False, default=None)
+    check_out_date = models.DateField(blank=False, default=None)
     claimed = models.BooleanField(default=False) # if reservation is claimed
-    days = models.IntegerField(default=1)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=255, blank=False, default=None)
 
