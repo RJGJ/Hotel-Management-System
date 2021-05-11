@@ -28,7 +28,7 @@ class Reservation(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True) # the employee/admin that created this reservation
     creation_date = models.DateTimeField(auto_now=True)
     check_in_date = models.DateField(blank=False, default=None)
-    check_out_date = models.DateField(blank=False, default=None)
+    check_out_date = models.DateField(default=None, null=True)
     claimed = models.BooleanField(default=False) # if reservation is claimed
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=255, blank=False, default=None)

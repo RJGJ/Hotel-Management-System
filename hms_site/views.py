@@ -1,3 +1,4 @@
+from django.http.request import HttpRequest
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
@@ -14,7 +15,7 @@ from .tasks import *
 # Create your views here.
 @login_required
 @staff_member_required
-def index(request, reservation_id=None):
+def index(request: HttpRequest, reservation_id=None):
 
     do_tasks()
 
@@ -35,7 +36,7 @@ def index(request, reservation_id=None):
             reservation_obj = Reservation.objects.get(id=reservation_id)
             form = ReservationForm(request.POST, instance=reservation_obj)
         
-        if form.is_valid:
+        if form.is_valid():
             if should_update:
                 obj = form.save(commit=False)
             else:
@@ -54,7 +55,7 @@ def index(request, reservation_id=None):
 
 @login_required
 @staff_member_required
-def available_rooms(request):
+def available_rooms(request: HttpRequest):
 
     do_tasks()
     
@@ -73,7 +74,7 @@ def available_rooms(request):
 
 @login_required
 @staff_member_required
-def reservations(request):
+def reservations(request: HttpRequest):
 
     do_tasks()
 
@@ -89,3 +90,22 @@ def reservations(request):
         'filter': my_filter,
     }
     return render(request, 'hms_site/reservations.html', context)
+
+
+@login_required
+@staff_member_required
+def rooms(request: HttpRequest) -> HttpResponse:
+    do_tasks()
+
+    queryset = Room.objects.all()
+    table = RoomTable(queryset)
+
+    my_filter = RoomFilter(request.GET, queryset)
+    queryset = my_filter.qs
+    table = RoomTable(queryset)
+
+    context = {
+        'table': table,
+        'filter': my_filter,
+    }
+    return render(request, 'hms_site/rooms.html', context)

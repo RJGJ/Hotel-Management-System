@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}HMS | Rooms{% endblock title %}
+{% block content %}
+
+{% include 'hms_site/navbar.html' %}
+
+<div class="container my-3 animate__animated animate__fadeIn">
+    <h2>Rooms</h2>
+
+    <form method="GET">
+        {% csrf_token %}
+        {{ filter.form }}
+        <input type="submit" value="Search" class="btn btn-primary btn-raised my-2">
+    </form>
+
+    <div>
+        {% load django_tables2 %} 
+        {% render_table table %}
+    </div>
+</div>
+
+{% endblock content %}

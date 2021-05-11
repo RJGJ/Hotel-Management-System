@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <a class="navbar-brand" href="{% url 'index' %}">Hotel Management System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,16 +7,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">Home/Create Reservation <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home/Create Reservation</a>
             </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'reservations' %}">Reservations<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'reservations' %}">Reservations</a>
             </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'account_logout' %}">Logout<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'rooms' %}">Rooms</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{% url 'account_logout' %}">Logout</a>
             </li>
 
         </ul>
