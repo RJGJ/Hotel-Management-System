@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*'] if DEBUG else []
 # Application definition
 
 INSTALLED_APPS = [
+    'hms_site',
+
     'django_filters',
     'django_tables2',
     'django_admin_generator',
@@ -42,8 +44,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
-    'hms_site',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -89,6 +89,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 
 # Password validation

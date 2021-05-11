@@ -3,16 +3,13 @@ from django.contrib import admin
 # vim: set fileencoding=utf-8 :
 from django.contrib import admin
 
-# vim: set fileencoding=utf-8 :
-from django.contrib import admin
-
 from . import models
 
 
 class RoomAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'price', 'state')
-    list_filter = ('id', 'name', 'price', 'state')
+    list_display = ('id', 'name', 'price', 'available')
+    list_filter = ('available', 'id', 'name', 'price', 'available')
     search_fields = ('name',)
 
 
@@ -29,8 +26,8 @@ class ReservationAdmin(admin.ModelAdmin):
         'creator',
         'creation_date',
         'check_in_date',
+        'check_out_date',
         'claimed',
-        'days',
         'room',
         'customer_name',
     )
@@ -38,14 +35,15 @@ class ReservationAdmin(admin.ModelAdmin):
         'creator',
         'creation_date',
         'check_in_date',
+        'check_out_date',
         'claimed',
         'room',
         'id',
         'creator',
         'creation_date',
         'check_in_date',
+        'check_out_date',
         'claimed',
-        'days',
         'room',
         'customer_name',
     )
