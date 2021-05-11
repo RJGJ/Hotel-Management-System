@@ -7,3 +7,10 @@ class ReservationTable(tables.Table):
     id = tables.LinkColumn('reservation', args=[tables.A('id')])
     class Meta:
         model = Reservation
+
+
+class RoomTable(tables.Table):
+    # id = tables.LinkColumn('reservation', args=[tables.A('id')])
+    class Meta:
+        model = Room
+        exclude = ['price',]

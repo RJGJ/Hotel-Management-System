@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 # vim: set fileencoding=utf-8 :
 from django.contrib import admin
 
@@ -9,7 +8,7 @@ from . import models
 class RoomAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'name', 'price', 'available')
-    list_filter = ('available', 'id', 'name', 'price', 'available')
+    list_filter = ('available', 'id', 'name', 'available')
     search_fields = ('name',)
 
 
